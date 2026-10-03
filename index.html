@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmaSalud | Tu salud, más cerca</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f7fbfa;
+    color:#243746;
+}
+
+/* =========================
+   COLORES PRINCIPALES
+========================= */
+:root{
+    --turquesa:#18B7A0;
+    --turquesa-dark:#129984;
+    --azul:#0B2A43;
+    --azul-light:#123b5a;
+    --blanco:#ffffff;
+    --gris:#667781;
+    --fondo:#f7fbfa;
+    --borde:#dcebe8;
+}
+
+/* =========================
+   BARRA SUPERIOR
+========================= */
+.top-bar{
+    background:var(--azul);
+    color:white;
+    padding:9px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+}
+
+.top-bar span{
+    opacity:.95;
+}
+
+/* =========================
+   HEADER
+========================= */
+header{
+    background:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(11,42,67,.08);
+}
+
+.header-main{
+    max-width:1250px;
+    margin:auto;
+    padding:16px 25px;
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    min-width:205px;
+}
+
+.logo-icon{
+    width:58px;
+    height:58px;
+    border-radius:14px;
+    background:white;
+    border:2px solid var(--turquesa);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.logo-icon img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.logo-text h1{
+    font-size:24px;
+    color:var(--azul);
+    font-weight:800;
+}
+
+.logo-text p{
+    font-size:11px;
+    color:var(--turquesa-dark);
+    font-weight:600;
+    margin-top:2px;
+}
+
+.search-box{
+    flex:1;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:14px 18px;
+    border:2px solid var(--borde);
+    border-radius:30px;
+    outline:none;
+    font-size:14px;
+    transition:.2s;
+}
+
+.search-box input:focus{
+    border-color:var(--turquesa);
+    box-shadow:0 0 0 3px rgba(24,183,160,.10);
+}
+
+.header-actions{
+    display:flex;
+    gap:10px;
+}
+
+.login-btn,
+.cart-btn{
+    border:none;
+    cursor:pointer;
+    padding:12px 17px;
+    border-radius:10px;
+    font-weight:700;
+    transition:.2s;
+}
+
+.login-btn{
+    background:#edf7f5;
+    color:var(--azul);
+}
+
+.login-btn:hover{
+    background:#dcefea;
+}
+
+.cart-btn{
+    background:var(--turquesa);
+    color:white;
+}
+
+.cart-btn:hover{
+    background:var(--turquesa-dark);
+}
+
+.cart-count{
+    background:white;
+    color:var(--turquesa-dark);
+    border-radius:50%;
+    padding:2px 6px;
+    margin-left:4px;
+    font-size:11px;
+}
+
+/* =========================
+   NAV
+========================= */
+.navbar{
+    border-top:1px solid #edf2f1;
+    background:white;
+}
+
+.navbar-content{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    padding:10px 20px;
+    overflow-x:auto;
+}
+
+.navbar button{
+    border:none;
+    background:transparent;
+    color:var(--azul);
+    padding:10px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    white-space:nowrap;
+    transition:.2s;
+}
+
+.navbar button:hover,
+.navbar button.active{
+    background:var(--turquesa);
+    color:white;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero{
+    max-width:1250px;
+    margin:30px auto;
+    padding:60px 7%;
+    min-height:420px;
+    border-radius:28px;
+    background:linear-gradient(120deg,#e9faf6,#eef6fb);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+    overflow:hidden;
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.hero-tag{
+    display:inline-block;
+    background:var(--turquesa);
+    color:white;
+    padding:8px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+.hero h2{
+    color:var(--azul);
+    font-size:48px;
+    line-height:1.08;
+    margin-bottom:18px;
+}
+
+.hero p{
+    color:var(--gris);
+    font-size:17px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.hero-button{
+    background:var(--turquesa);
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.hero-button:hover{
+    background:var(--turquesa-dark);
+    transform:translateY(-2px);
+}
+
+.hero-decoration{
+    width:310px;
+    height:240px;
+    border-radius:30px;
+    background:linear-gradient(135deg,var(--azul),var(--turquesa));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px;
+    box-shadow:0 20px 40px rgba(11,42,67,.18);
+    flex-shrink:0;
+}
+
+.hero-decoration img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:white;
+    border-radius:20px;
+    padding:15px;
+}
+
+/* =========================
+   CATEGORÍAS
+========================= */
+.categories{
+    max-width:1250px;
+    margin:50px auto;
+    padding:0 25px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    color:var(--azul);
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.section-title p{
+    color:var(--gris);
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:15px;
+}
+
+.category-card{
+    background:white;
+    border:1px solid var(--borde);
+    border-radius:16px;
+    padding:20px 10px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.category-card:hover{
+    transform:translateY(-5px);
+    border-color:var(--turquesa);
+    box-shadow:0 10px 25px rgba(11,42,67,.08);
+}
+
+.category-icon{
+    width:55px;
+    height:55px;
+    margin:0 auto 12px;
+    background:#e9faf6;
+    color:var(--turquesa-dark);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.category-card h3{
+    color:var(--azul);
+    font-size:14px;
+}
+
+/* =========================
+   PRODUCTOS
+========================= */
+.products-section{
+    max-width:1250px;
+    margin:60px auto;
+    padding:0 25px;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product{
+    background:white;
+    border:1px solid var(--borde);
+    border-radius:18px;
+    padding:15px;
+    transition:.25s;
+    overflow:hidden;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(11,42,67,.10);
+    border-color:#b8ded7;
+}
+
+.product-image{
+    height:190px;
+    border-radius:14px;
+    background:#f3faf8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    margin-bottom:15px;
+    border:1px solid #e1efec;
+}
+
+.product-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:15px;
+    transition:.25s;
+}
+
+.product:hover .product-image img{
+    transform:scale(1.05);
+}
+
+.product h3{
+    color:var(--azul);
+    font-size:17px;
+    margin-bottom:7px;
+}
+
+.product-category{
+    color:var(--turquesa-dark);
+    font-size:12px;
+    font-weight:700;
+    text-transform:uppercase;
+    margin-bottom:8px;
+}
+
+.product-description{
+    color:var(--gris);
+    font-size:13px;
+    line-height:1.5;
+    min-height:40px;
+    margin-bottom:12px;
+}
+
+.product-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+}
+
+.product-price{
+    color:var(--azul);
+    font-size:19px;
+    font-weight:800;
+}
+
+.add-cart{
+    background:var(--turquesa);
+    color:white;
+    border:none;
+    padding:10px 13px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:700;
+    transition:.2s;
+}
+
+.add-cart:hover{
+    background:var(--turquesa-dark);
+}
+
+/* =========================
+   PROMOCIONES
+========================= */
+.promotions{
+    max-width:1250px;
+    margin:70px auto;
+    padding:0 25px;
+}
+
+.promo-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.promo-card{
+    min-height:190px;
+    border-radius:20px;
+    padding:28px;
+    color:white;
+    background:linear-gradient(135deg,var(--azul),var(--turquesa));
+    position:relative;
+    overflow:hidden;
+}
+
+.promo-card:nth-child(2){
+    background:linear-gradient(135deg,var(--turquesa),#0b8d7b);
+}
+
+.promo-card:nth-child(3){
+    background:linear-gradient(135deg,#123b5a,var(--azul));
+}
+
+.promo-card h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.promo-card p{
+    font-size:14px;
+    line-height:1.5;
+    max-width:270px;
+}
+
+/* =========================
+   COMO FUNCIONA
+========================= */
+.how-section{
+    max-width:1100px;
+    margin:70px auto;
+    padding:0 25px;
+}
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.step{
+    background:white;
+    border:1px solid var(--borde);
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+}
+
+.step-number{
+    width:50px;
+    height:50px;
+    background:var(--turquesa);
+    color:white;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 15px;
+    font-size:20px;
+    font-weight:800;
+}
+
+.step h3{
+    color:var(--azul);
+    margin-bottom:8px;
+}
+
+.step p{
+    color:var(--gris);
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* =========================
+   CARRITO LATERAL
+========================= */
+.cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:1999;
+    display:none;
+}
+
+.cart-overlay.active{
+    display:block;
+}
+
+.cart-panel{
+    position:fixed;
+    top:0;
+    right:-430px;
+    width:400px;
+    max-width:95%;
+    height:100vh;
+    background:white;
+    z-index:2000;
+    box-shadow:-10px 0 30px rgba(0,0,0,.15);
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+}
+
+.cart-panel.active{
+    right:0;
+}
+
+.cart-header{
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid var(--borde);
+}
+
+.cart-header h2{
+    color:var(--azul);
+}
+
+.close-cart{
+    border:none;
+    background:#edf7f5;
+    color:var(--azul);
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.cart-items{
+    flex:1;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.cart-item{
+    display:flex;
+    gap:12px;
+    padding:15px 0;
+    border-bottom:1px solid var(--borde);
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info h4{
+    color:var(--azul);
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.cart-item-info p{
+    color:var(--turquesa-dark);
+    font-weight:700;
+}
+
+.cart-controls{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    margin-top:8px;
+}
+
+.cart-controls button{
+    border:none;
+    background:#edf7f5;
+    color:var(--azul);
+    width:27px;
+    height:27px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.delete-item{
+    background:#fff0f0!important;
+    color:#c0392b!important;
+}
+
+.cart-footer{
+    padding:20px;
+    border-top:1px solid var(--borde);
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    color:var(--azul);
+    font-size:20px;
+    font-weight:800;
+    margin-bottom:15px;
+}
+
+.checkout{
+    width:100%;
+    border:none;
+    background:var(--turquesa);
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.checkout:hover{
+    background:var(--turquesa-dark);
+}
+
+.empty-cart{
+    text-align:center;
+    color:var(--gris);
+    padding:40px 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+    background:var(--azul);
+    color:white;
+    margin-top:80px;
+}
+
+.footer-content{
+    max-width:1250px;
+    margin:auto;
+    padding:50px 25px;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:15px;
+}
+
+.footer-logo img{
+    width:55px;
+    height:55px;
+    background:white;
+    border-radius:12px;
+    padding:5px;
+    object-fit:contain;
+}
+
+.footer-content h3{
+    margin-bottom:12px;
+}
+
+.footer-content p,
+.footer-content li{
+    color:#cbd8df;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.footer-content ul{
+    list-style:none;
+}
+
+.footer-bottom{
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.1);
+    padding:18px;
+    color:#cbd8df;
+    font-size:13px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:1000px){
+    .products-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .hero h2{
+        font-size:38px;
+    }
+}
+
+@media(max-width:750px){
+    .top-bar{
+        display:none;
+    }
+
+    .header-main{
+        flex-wrap:wrap;
+        padding:12px 15px;
+    }
+
+    .logo{
+        min-width:auto;
+    }
+
+    .search-box{
+        order:3;
+        flex-basis:100%;
+    }
+
+    .header-actions{
+        margin-left:auto;
+    }
+
+    .login-btn{
+        display:none;
+    }
+
+    .hero{
+        margin:20px 15px;
+        padding:35px 25px;
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero h2{
+        font-size:34px;
+    }
+
+    .hero-decoration{
+        width:240px;
+        height:190px;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .promo-grid,
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .footer-content{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:500px){
+    .products-grid{
+        grid-template-columns:1fr;
+    }
+
+    .category-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .logo-text h1{
+        font-size:19px;
+    }
+
+    .logo-icon{
+        width:48px;
+        height:48px;
+    }
+
+    .cart-btn{
+        padding:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BARRA SUPERIOR -->
+<div class="top-bar">
+    <span>💚 Atención y confianza para tu salud</span>
+    <span>📞 Servicio al cliente: 999 999 999</span>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="header-main">
+
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="img/logo.png" alt="Logo FarmaSalud">
+            </div>
+
+            <div class="logo-text">
+                <h1>FarmaSalud</h1>
+                <p>Tu salud, más cerca</p>
+            </div>
+        </a>
+
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="¿Qué estás buscando?"
+            >
+        </div>
+
+        <div class="header-actions">
+            <button class="login-btn" onclick="irLogin()">
+                Iniciar sesión
+            </button>
+
+            <button class="cart-btn" onclick="abrirCarrito()">
+                🛒 Carrito
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="navbar-content">
+
+            <button class="active" onclick="filtrar('todos',this)">
+                Todos
+            </button>
+
+            <button onclick="filtrar('medicamentos',this)">
+                Medicamentos
+            </button>
+
+            <button onclick="filtrar('vitaminas',this)">
+                Vitaminas
+            </button>
+
+            <button onclick="filtrar('cuidado',this)">
+                Cuidado personal
+            </button>
+
+            <button onclick="filtrar('bebes',this)">
+                Bebés
+            </button>
+
+            <button onclick="filtrar('primeros',this)">
+                Primeros auxilios
+            </button>
+
+            <button onclick="filtrar('proteccion',this)">
+                Protección
+            </button>
+
+        </div>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <span class="hero-tag">
+            FARMA SALUD
+        </span>
+
+        <h2>
+            Encuentra lo que necesitas más fácil.
+        </h2>
+
+        <p>
+            Compra productos para el cuidado de tu salud de manera
+            rápida, sencilla y segura.
+        </p>
+
+        <button class="hero-button" onclick="irProductos()">
+            Ver productos
+        </button>
+
+    </div>
+
+    <div class="hero-decoration">
+        <img src="img/logo.png" alt="FarmaSalud">
+    </div>
+
+</section>
+
+<!-- CATEGORÍAS -->
+<section class="categories">
+
+    <div class="section-title">
+        <h2>Compra por categoría</h2>
+        <p>Encuentra rápidamente lo que necesitas</p>
+    </div>
+
+    <div class="category-grid">
+
+        <div class="category-card" onclick="filtrar('medicamentos')">
+            <div class="category-icon">💊</div>
+            <h3>Medicamentos</h3>
+        </div>
+
+        <div class="category-card" onclick="filtrar('vitaminas')">
+            <div class="category-icon">🍊</div>
+            <h3>Vitaminas</h3>
+        </div>
+
+        <div class="category-card" onclick="filtrar('cuidado')">
+            <div class="category-icon">🧴</div>
+            <h3>Cuidado personal</h3>
+        </div>
+
+        <div class="category-card" onclick="filtrar('bebes')">
+            <div class="category-icon">👶</div>
+            <h3>Bebés</h3>
+        </div>
+
+        <div class="category-card" onclick="filtrar('primeros')">
+            <div class="category-icon">🩹</div>
+            <h3>Primeros auxilios</h3>
+        </div>
+
+        <div class="category-card" onclick="filtrar('proteccion')">
+            <div class="category-icon">🛡️</div>
+            <h3>Protección</h3>
+        </div>
+
+    </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section class="products-section" id="productos">
+
+    <div class="section-title">
+        <h2>Productos destacados</h2>
+        <p>Elige los productos que necesitas</p>
+    </div>
+
+    <div class="products-grid" id="productsContainer"></div>
+
+</section>
+
+<!-- PROMOCIONES -->
+<section class="promotions">
+
+    <div class="section-title">
+        <h2>Promociones</h2>
+        <p>Beneficios especiales de FarmaSalud</p>
+    </div>
+
+    <div class="promo-grid">
+
+        <div class="promo-card">
+            <h3>Envíos rápidos</h3>
+            <p>
+                Recibe tus productos de manera rápida y segura.
+            </p>
+        </div>
+
+        <div class="promo-card">
+            <h3>Compra segura</h3>
+            <p>
+                Una experiencia sencilla para encontrar tus productos.
+            </p>
+        </div>
+
+        <div class="promo-card">
+            <h3>Atención personalizada</h3>
+            <p>
+                Estamos para ayudarte durante tu proceso de compra.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="how-section">
+
+    <div class="section-title">
+        <h2>¿Cómo funciona?</h2>
+        <p>Comprar en FarmaSalud es muy sencillo</p>
+    </div>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Elige</h3>
+            <p>
+                Busca el producto que necesitas y agrégalo al carrito.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Confirma</h3>
+            <p>
+                Revisa tus productos y continúa con tu pedido.
+            </p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Recibe</h3>
+            <p>
+                Realiza el seguimiento de tu pedido hasta recibirlo.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CARRITO -->
+<div class="cart-overlay" id="cartOverlay" onclick="cerrarCarrito()"></div>
+
+<aside class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+        <h2>Mi carrito</h2>
+
+        <button class="close-cart" onclick="cerrarCarrito()">
+            ×
+        </button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="cart-footer">
+
+        <div class="cart-total">
+            <span>Total</span>
+            <span id="cartTotal">S/ 0.00</span>
+        </div>
+
+        <button class="checkout" onclick="continuarCarrito()">
+            Continuar compra
+        </button>
+
+    </div>
+
+</aside>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-content">
+
+        <div>
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="FarmaSalud">
+
+                <div>
+                    <h2>FarmaSalud</h2>
+                    <p>Tu salud, más cerca</p>
+                </div>
+            </div>
+
+            <p>
+                Una propuesta digital para facilitar la búsqueda
+                y compra de productos de salud.
+            </p>
+        </div>
+
+        <div>
+            <h3>FarmaSalud</h3>
+
+            <ul>
+                <li>Inicio</li>
+                <li>Productos</li>
+                <li>Promociones</li>
+                <li>Seguimiento</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Contacto</h3>
+
+            <p>📞 999 999 999</p>
+            <p>📧 contacto@farmasalud.com</p>
+            <p>📍 Perú</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 FarmaSalud. Todos los derechos reservados.
+    </div>
+
+</footer>
+
+<script>
+
+/* =========================
+   PRODUCTOS
+========================= */
+
+const productos = [
+
+    {
+        id:1,
+        nombre:"Paracetamol 500 mg",
+        categoria:"medicamentos",
+        precio:8.90,
+        descripcion:"Analgésico y antipirético.",
+        receta:false,
+        imagen:"paracetamol.png"
+    },
+
+    {
+        id:2,
+        nombre:"Ibuprofeno 400 mg",
+        categoria:"medicamentos",
+        precio:12.90,
+        descripcion:"Medicamento de venta libre según presentación y normativa aplicable.",
+        receta:false,
+        imagen:"ibuprofeno.png"
+    },
+
+    {
+        id:3,
+        nombre:"Loratadina 10 mg",
+        categoria:"medicamentos",
+        precio:10.50,
+        descripcion:"Antihistamínico.",
+        receta:false,
+        imagen:"loratadina.png"
+    },
+
+    {
+        id:4,
+        nombre:"Omeprazol 20 mg",
+        categoria:"medicamentos",
+        precio:13.90,
+        descripcion:"Medicamento para determinadas condiciones digestivas.",
+        receta:false,
+        imagen:"omeprazol.png"
+    },
+
+    {
+        id:5,
+        nombre:"Medicamento sujeto a receta",
+        categoria:"medicamentos",
+        precio:35.90,
+        descripcion:"Producto de demostración para el flujo con receta médica.",
+        receta:true,
+        imagen:"medicamento-receta.png"
+    },
+
+    {
+        id:6,
+        nombre:"Antibiótico — presentación referencial",
+        categoria:"medicamentos",
+        precio:28.90,
+        descripcion:"Ejemplo de producto que requiere evaluación y receta.",
+        receta:true,
+        imagen:"antibiotico.png"
+    },
+
+    {
+        id:7,
+        nombre:"Vitamina C",
+        categoria:"vitaminas",
+        precio:18.90,
+        descripcion:"Suplemento de vitamina C.",
+        receta:false,
+        imagen:"vitamina-c.png"
+    },
+
+    {
+        id:8,
+        nombre:"Multivitamínico",
+        categoria:"vitaminas",
+        precio:32.90,
+        descripcion:"Complemento multivitamínico.",
+        receta:false,
+        imagen:"multivitaminico.png"
+    },
+
+    {
+        id:9,
+        nombre:"Zinc",
+        categoria:"vitaminas",
+        precio:22.90,
+        descripcion:"Suplemento de zinc.",
+        receta:false,
+        imagen:"zinc.png"
+    },
+
+    {
+        id:10,
+        nombre:"Omega 3",
+        categoria:"vitaminas",
+        precio:39.90,
+        descripcion:"Complemento alimenticio.",
+        receta:false,
+        imagen:"omega-3.png"
+    },
+
+    {
+        id:11,
+        nombre:"Protector solar FPS 50+",
+        categoria:"cuidado",
+        precio:45.90,
+        descripcion:"Protector solar para uso diario.",
+        receta:false,
+        imagen:"protector-solar.png"
+    },
+
+    {
+        id:12,
+        nombre:"Gel limpiador facial",
+        categoria:"cuidado",
+        precio:34.90,
+        descripcion:"Producto de higiene facial.",
+        receta:false,
+        imagen:"gel-facial.png"
+    },
+
+    {
+        id:13,
+        nombre:"Crema hidratante",
+        categoria:"cuidado",
+        precio:29.90,
+        descripcion:"Hidratante para cuidado de la piel.",
+        receta:false,
+        imagen:"crema-hidratante.png"
+    },
+
+    {
+        id:14,
+        nombre:"Shampoo",
+        categoria:"cuidado",
+        precio:24.90,
+        descripcion:"Producto para higiene capilar.",
+        receta:false,
+        imagen:"shampoo.png"
+    },
+
+    {
+        id:15,
+        nombre:"Pañales para bebé",
+        categoria:"bebes",
+        precio:39.90,
+        descripcion:"Pañales desechables.",
+        receta:false,
+        imagen:"panales.png"
+    },
+
+    {
+        id:16,
+        nombre:"Toallitas húmedas",
+        categoria:"bebes",
+        precio:12.90,
+        descripcion:"Toallitas para higiene del bebé.",
+        receta:false,
+        imagen:"toallitas.png"
+    },
+
+    {
+        id:17,
+        nombre:"Termómetro digital",
+        categoria:"bebes",
+        precio:25.90,
+        descripcion:"Dispositivo para medición de temperatura.",
+        receta:false,
+        imagen:"termometro.png"
+    },
+
+    {
+        id:18,
+        nombre:"Curitas adhesivas",
+        categoria:"primeros",
+        precio:7.90,
+        descripcion:"Protección para pequeñas lesiones.",
+        receta:false,
+        imagen:"curitas.png"
+    },
+
+    {
+        id:19,
+        nombre:"Venda elástica",
+        categoria:"primeros",
+        precio:9.90,
+        descripcion:"Material de primeros auxilios.",
+        receta:false,
+        imagen:"venda.png"
+    },
+
+    {
+        id:20,
+        nombre:"Gasas estériles",
+        categoria:"primeros",
+        precio:8.90,
+        descripcion:"Material para botiquín.",
+        receta:false,
+        imagen:"gasas.png"
+    },
+
+    {
+        id:21,
+        nombre:"Alcohol en gel",
+        categoria:"primeros",
+        precio:10.90,
+        descripcion:"Producto para higiene de manos.",
+        receta:false,
+        imagen:"alcohol-gel.png"
+    },
+
+    {
+        id:22,
+        nombre:"Mascarillas",
+        categoria:"proteccion",
+        precio:12.90,
+        descripcion:"Mascarillas desechables.",
+        receta:false,
+        imagen:"mascarillas.png"
+    },
+
+    {
+        id:23,
+        nombre:"Guantes descartables",
+        categoria:"proteccion",
+        precio:15.90,
+        descripcion:"Guantes de protección.",
+        receta:false,
+        imagen:"guantes.png"
+    },
+
+    {
+        id:24,
+        nombre:"Protector facial",
+        categoria:"proteccion",
+        precio:19.90,
+        descripcion:"Elemento de protección personal.",
+        receta:false,
+        imagen:"protector-facial.png"
+    }
+
+];
+
+
+/* =========================
+   CARRITO
+========================= */
+
+let carrito = JSON.parse(
+    localStorage.getItem("farmaSaludCarrito")
+) || [];
+
+
+/* =========================
+   MOSTRAR PRODUCTOS
+========================= */
+
+function mostrarProductos(lista){
+
+    const container =
+        document.getElementById("productsContainer");
+
+    if(lista.length === 0){
+
+        container.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:50px;
+                color:#667781;
+            ">
+                <h3>No encontramos productos</h3>
+                <p>Intenta con otra búsqueda.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    container.innerHTML = lista.map(producto => `
+
+        <div class="product">
+
+            <div class="product-image">
+
+                <img
+                    src="img/${producto.imagen}"
+                    alt="${producto.nombre}"
+                    onerror="this.style.display='none'"
+                >
+
+            </div>
+
+            <div class="product-category">
+                ${producto.categoria}
+            </div>
+
+            <h3>
+                ${producto.nombre}
+            </h3>
+
+            <p class="product-description">
+                ${producto.descripcion}
+            </p>
+
+            <div class="product-bottom">
+
+                <span class="product-price">
+                    S/ ${producto.precio.toFixed(2)}
+                </span>
+
+                <button
+                    class="add-cart"
+                    onclick="agregarCarrito(${producto.id})"
+                >
+                    + Agregar
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+}
+
+
+/* =========================
+   AGREGAR AL CARRITO
+========================= */
+
+function agregarCarrito(id){
+
+    const producto = productos.find(
+        p => p.id === id
+    );
+
+    if(!producto) return;
+
+    const existente = carrito.find(
+        item => item.id === id
+    );
+
+    if(existente){
+
+        existente.cantidad++;
+
+    }else{
+
+        carrito.push({
+            ...producto,
+            cantidad:1
+        });
+
+    }
+
+    guardarCarrito();
+    actualizarCarrito();
+    abrirCarrito();
+}
+
+
+/* =========================
+   GUARDAR
+========================= */
+
+function guardarCarrito(){
+
+    localStorage.setItem(
+        "farmaSaludCarrito",
+        JSON.stringify(carrito)
+    );
+
+}
+
+
+/* =========================
+   ACTUALIZAR CARRITO
+========================= */
+
+function actualizarCarrito(){
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+    const cartTotal =
+        document.getElementById("cartTotal");
+
+
+    const cantidadTotal =
+        carrito.reduce(
+            (total,item) => total + item.cantidad,
+            0
+        );
+
+
+    cartCount.textContent = cantidadTotal;
+
+
+    if(carrito.length === 0){
+
+        cartItems.innerHTML = `
+            <div class="empty-cart">
+                <h3>Tu carrito está vacío</h3>
+                <p>Agrega productos para comenzar tu compra.</p>
+            </div>
+        `;
+
+        cartTotal.textContent = "S/ 0.00";
+
+        return;
+    }
+
+
+    cartItems.innerHTML = carrito.map(item => `
+
+        <div class="cart-item">
+
+            <div class="cart-item-info">
+
+                <h4>
+                    ${item.nombre}
+                </h4>
+
+                <p>
+                    S/ ${item.precio.toFixed(2)}
+                </p>
+
+                <div class="cart-controls">
+
+                    <button
+                        onclick="cambiarCantidad(${item.id},-1)"
+                    >
+                        −
+                    </button>
+
+                    <span>
+                        ${item.cantidad}
+                    </span>
+
+                    <button
+                        onclick="cambiarCantidad(${item.id},1)"
+                    >
+                        +
+                    </button>
+
+                    <button
+                        class="delete-item"
+                        onclick="eliminarProducto(${item.id})"
+                    >
+                        🗑
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+
+    const total =
+        carrito.reduce(
+            (sum,item) =>
+                sum + item.precio * item.cantidad,
+            0
+        );
+
+
+    cartTotal.textContent =
+        "S/ " + total.toFixed(2);
+}
+
+
+/* =========================
+   CAMBIAR CANTIDAD
+========================= */
+
+function cambiarCantidad(id,cambio){
+
+    const item =
+        carrito.find(
+            producto => producto.id === id
+        );
+
+    if(!item) return;
+
+    item.cantidad += cambio;
+
+    if(item.cantidad <= 0){
+
+        carrito =
+            carrito.filter(
+                producto => producto.id !== id
+            );
+
+    }
+
+    guardarCarrito();
+    actualizarCarrito();
+}
+
+
+/* =========================
+   ELIMINAR
+========================= */
+
+function eliminarProducto(id){
+
+    carrito =
+        carrito.filter(
+            item => item.id !== id
+        );
+
+    guardarCarrito();
+    actualizarCarrito();
+}
+
+
+/* =========================
+   ABRIR CARRITO
+========================= */
+
+function abrirCarrito(){
+
+    document
+        .getElementById("cartPanel")
+        .classList.add("active");
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("active");
+
+}
+
+
+/* =========================
+   CERRAR CARRITO
+========================= */
+
+function cerrarCarrito(){
+
+    document
+        .getElementById("cartPanel")
+        .classList.remove("active");
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("active");
+
+}
+
+
+/* =========================
+   CONTINUAR COMPRA
+========================= */
+
+function continuarCarrito(){
+
+    if(carrito.length === 0){
+
+        alert("Tu carrito está vacío.");
+
+        return;
+    }
+
+
+    const usuario =
+        localStorage.getItem("farmaSaludUsuario");
+
+
+    if(!usuario){
+
+        window.location.href =
+            "login.html";
+
+        return;
+    }
+
+
+    window.location.href =
+        "carrito.html";
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function irLogin(){
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* =========================
+   FILTRAR
+========================= */
+
+function filtrar(categoria, boton){
+
+    let lista;
+
+    if(categoria === "todos"){
+
+        lista = productos;
+
+    }else{
+
+        lista =
+            productos.filter(
+                producto =>
+                    producto.categoria === categoria
+            );
+
+    }
+
+
+    mostrarProductos(lista);
+
+
+    document
+        .querySelectorAll(".navbar button")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+
+    if(boton){
+
+        boton.classList.add("active");
+
+    }
+
+}
+
+
+/* =========================
+   IR A PRODUCTOS
+========================= */
+
+function irProductos(){
+
+    document
+        .getElementById("productos")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+document
+    .getElementById("searchInput")
+    .addEventListener("input", function(){
+
+        const texto =
+            this.value
+                .toLowerCase()
+                .trim();
+
+
+        if(texto === ""){
+
+            mostrarProductos(productos);
+
+            return;
+        }
+
+
+        const resultados =
+            productos.filter(producto =>
+
+                producto.nombre
+                    .toLowerCase()
+                    .includes(texto)
+
+                ||
+
+                producto.descripcion
+                    .toLowerCase()
+                    .includes(texto)
+
+                ||
+
+                producto.categoria
+                    .toLowerCase()
+                    .includes(texto)
+
+            );
+
+
+        mostrarProductos(resultados);
+
+    });
+
+
+/* =========================
+   INICIAR PÁGINA
+========================= */
+
+mostrarProductos(productos);
+actualizarCarrito();
+
+</script>
+
+</body>
+<img src="img/logo.png" alt="Prueba del logo" style="width:200px;">
+</html>

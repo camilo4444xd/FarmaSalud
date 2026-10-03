@@ -1,0 +1,2842 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Carrito | FarmaSalud</title>
+
+<style>
+
+/* =====================================================
+   GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+:root{
+    --turquesa:#18B7A0;
+    --turquesa-dark:#129984;
+    --azul:#0B2A43;
+    --azul-light:#123B5A;
+    --fondo:#F5FAF9;
+    --blanco:#FFFFFF;
+    --gris:#6B7D85;
+    --borde:#DDEBE8;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at 5% 10%,
+            rgba(24,183,160,.08),
+            transparent 28%
+        ),
+        var(--fondo);
+
+    color:var(--azul);
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+
+    height:78px;
+
+    background:white;
+
+    border-bottom:1px solid var(--borde);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    box-shadow:
+        0 4px 18px rgba(11,42,67,.06);
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+}
+
+.logo img{
+
+    width:50px;
+
+    height:50px;
+
+    object-fit:contain;
+
+}
+
+.logo-fallback{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:14px;
+
+    background:white;
+
+    border:2px solid var(--turquesa);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+}
+
+.logo-fallback img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+}
+
+.logo h1{
+
+    color:var(--azul);
+
+    font-size:23px;
+
+    font-weight:800;
+
+}
+
+.logo p{
+
+    font-size:10px;
+
+    color:var(--turquesa-dark);
+
+    margin-top:2px;
+
+    font-weight:600;
+
+}
+
+
+.back-home{
+
+    color:var(--turquesa-dark);
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    padding:10px 15px;
+
+    border-radius:9px;
+
+    transition:.2s;
+
+}
+
+.back-home:hover{
+
+    background:#E9F8F5;
+
+}
+
+
+/* =====================================================
+   CONTENEDOR
+===================================================== */
+
+.container{
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:38px auto 60px;
+
+}
+
+
+.page-title{
+
+    margin-bottom:27px;
+
+}
+
+.page-title h2{
+
+    font-size:32px;
+
+    color:var(--azul);
+
+    margin-bottom:7px;
+
+}
+
+.page-title p{
+
+    color:var(--gris);
+
+    font-size:14px;
+
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.checkout-layout{
+
+    display:grid;
+
+    grid-template-columns:
+    1.6fr
+    .8fr;
+
+    gap:24px;
+
+}
+
+
+/* =====================================================
+   TARJETAS
+===================================================== */
+
+.card{
+
+    background:white;
+
+    border:1px solid var(--borde);
+
+    border-radius:19px;
+
+    padding:24px;
+
+    margin-bottom:20px;
+
+    box-shadow:
+        0 7px 25px rgba(11,42,67,.045);
+
+}
+
+
+.card-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    margin-bottom:20px;
+
+}
+
+
+.card-title .number{
+
+    width:33px;
+
+    height:33px;
+
+    border-radius:10px;
+
+    background:var(--turquesa);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 5px 12px rgba(24,183,160,.20);
+
+}
+
+
+.card-title h3{
+
+    font-size:18px;
+
+    color:var(--azul);
+
+}
+
+
+/* =====================================================
+   PRODUCTOS
+===================================================== */
+
+.product-item{
+
+    display:grid;
+
+    grid-template-columns:
+    100px
+    1fr
+    auto;
+
+    gap:17px;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #EDF3F1;
+
+}
+
+.product-item:last-child{
+
+    border-bottom:none;
+
+}
+
+
+/* IMAGEN DEL PRODUCTO */
+
+.product-placeholder{
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #EFFAF8,
+            #E4F4F0
+        );
+
+    border:1px solid #DCEDE9;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:#91A5AA;
+
+    font-size:10px;
+
+    text-align:center;
+
+    overflow:hidden;
+
+}
+
+
+/*
+   MÁS ADELANTE PUEDES CAMBIAR EL CONTENIDO
+   POR:
+
+   <img src="img/${item.imagen}" alt="${item.nombre}">
+
+*/
+
+.product-placeholder img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    padding:10px;
+
+    transition:.25s;
+
+}
+
+.product-item:hover
+.product-placeholder img{
+
+    transform:scale(1.06);
+
+}
+
+
+.product-name{
+
+    font-size:16px;
+
+    font-weight:800;
+
+    color:var(--azul);
+
+    margin-bottom:5px;
+
+}
+
+
+.product-category{
+
+    color:var(--turquesa-dark);
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+
+    margin-bottom:5px;
+
+}
+
+
+.product-price{
+
+    color:var(--gris);
+
+    font-size:12px;
+
+    margin-top:5px;
+
+}
+
+
+.product-total{
+
+    font-weight:800;
+
+    color:var(--azul);
+
+    text-align:right;
+
+    font-size:16px;
+
+}
+
+
+/* =====================================================
+   CANTIDAD
+===================================================== */
+
+.quantity{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:10px;
+
+}
+
+
+.quantity button{
+
+    width:28px;
+
+    height:28px;
+
+    border:1px solid #D8E7E3;
+
+    background:white;
+
+    color:var(--azul);
+
+    border-radius:7px;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+
+.quantity button:hover{
+
+    background:#EAF8F5;
+
+    border-color:var(--turquesa);
+
+}
+
+
+.quantity span{
+
+    min-width:22px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+}
+
+
+.delete-product{
+
+    border:none!important;
+
+    background:#FFF2F2!important;
+
+    color:#D34E4E!important;
+
+    width:auto!important;
+
+    padding:0 9px;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   RECETA
+===================================================== */
+
+.recipe-warning{
+
+    margin-top:12px;
+
+    background:#FFFAF0;
+
+    border:1px solid #EFD49D;
+
+    border-radius:10px;
+
+    padding:11px;
+
+    color:#8D621E;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+}
+
+
+.recipe-ok{
+
+    margin-top:10px;
+
+    background:#EEF9F5;
+
+    border:1px solid #CBE9DD;
+
+    color:#217553;
+
+    border-radius:9px;
+
+    padding:10px;
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   DATOS CLIENTE
+===================================================== */
+
+.info-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:15px;
+
+}
+
+
+.info-box{
+
+    background:#F7FBFA;
+
+    border:1px solid #E1ECE9;
+
+    border-radius:12px;
+
+    padding:14px;
+
+}
+
+
+.info-box.full{
+
+    grid-column:1/-1;
+
+}
+
+
+.info-label{
+
+    color:#7A8C94;
+
+    font-size:10px;
+
+    margin-bottom:5px;
+
+    text-transform:uppercase;
+
+    font-weight:bold;
+
+}
+
+
+.info-value{
+
+    color:var(--azul);
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+/* =====================================================
+   PAGOS
+===================================================== */
+
+.payment-options{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:12px;
+
+}
+
+
+.payment-option{
+
+    border:1px solid #DCE9E6;
+
+    background:white;
+
+    border-radius:13px;
+
+    padding:16px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.payment-option:hover{
+
+    border-color:var(--turquesa);
+
+    background:#F6FCFB;
+
+    transform:translateY(-1px);
+
+}
+
+
+.payment-option.selected{
+
+    border:2px solid var(--turquesa);
+
+    background:#EFFAF7;
+
+}
+
+
+.payment-option input{
+
+    accent-color:var(--turquesa);
+
+}
+
+
+.payment-icon{
+
+    font-size:24px;
+
+}
+
+
+.payment-name{
+
+    font-weight:bold;
+
+    color:var(--azul);
+
+    font-size:13px;
+
+}
+
+
+.payment-description{
+
+    font-size:10px;
+
+    color:#82949C;
+
+    margin-top:3px;
+
+}
+
+
+/* =====================================================
+   TARJETA
+===================================================== */
+
+.card-form{
+
+    margin-top:15px;
+
+    background:#F7FBFA;
+
+    border:1px solid #E1ECE9;
+
+    padding:17px;
+
+    border-radius:12px;
+
+}
+
+
+.form-group{
+
+    margin-bottom:13px;
+
+}
+
+
+.form-group label{
+
+    display:block;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    color:#4C6570;
+
+    margin-bottom:6px;
+
+}
+
+
+.form-group input{
+
+    width:100%;
+
+    padding:11px;
+
+    border:1px solid #DCE7E5;
+
+    border-radius:8px;
+
+    outline:none;
+
+}
+
+
+.form-group input:focus{
+
+    border-color:var(--turquesa);
+
+    box-shadow:
+        0 0 0 3px rgba(24,183,160,.10);
+
+}
+
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+}
+
+
+/* =====================================================
+   RESUMEN
+===================================================== */
+
+.summary{
+
+    position:sticky;
+
+    top:100px;
+
+}
+
+
+.summary h3{
+
+    font-size:20px;
+
+    color:var(--azul);
+
+    margin-bottom:22px;
+
+}
+
+
+.summary-line{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:14px;
+
+    color:#667D86;
+
+    font-size:14px;
+
+}
+
+
+.summary-line strong{
+
+    color:var(--azul);
+
+}
+
+
+.summary-line.total{
+
+    border-top:1px solid #E3ECEF;
+
+    padding-top:18px;
+
+    margin-top:16px;
+
+    color:var(--azul);
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+
+.summary-line.total strong{
+
+    color:var(--turquesa-dark);
+
+}
+
+
+.confirm-button{
+
+    width:100%;
+
+    border:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--turquesa),
+            var(--turquesa-dark)
+        );
+
+    color:white;
+
+    padding:16px;
+
+    border-radius:11px;
+
+    font-weight:bold;
+
+    font-size:15px;
+
+    margin-top:15px;
+
+    transition:.25s;
+
+}
+
+
+.confirm-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 9px 22px rgba(24,183,160,.25);
+
+}
+
+
+.secure{
+
+    text-align:center;
+
+    color:#84959C;
+
+    font-size:10px;
+
+    margin-top:12px;
+
+    line-height:1.5;
+
+}
+
+
+/* =====================================================
+   CONFIRMACIÓN
+===================================================== */
+
+.confirmation{
+
+    max-width:850px;
+
+    margin:40px auto;
+
+}
+
+
+.success{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:42px;
+
+    text-align:center;
+
+    border:1px solid var(--borde);
+
+    box-shadow:
+        0 15px 45px rgba(11,42,67,.08);
+
+}
+
+
+.success-icon{
+
+    width:78px;
+
+    height:78px;
+
+    border-radius:50%;
+
+    background:#E7F8F2;
+
+    color:#16835D;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin:0 auto 20px;
+
+    font-size:38px;
+
+}
+
+
+.success h2{
+
+    color:var(--azul);
+
+    font-size:29px;
+
+    margin-bottom:8px;
+
+}
+
+
+.success p{
+
+    color:var(--gris);
+
+    line-height:1.6;
+
+    font-size:14px;
+
+}
+
+
+.order-code{
+
+    background:#F0FAF8;
+
+    border:1px dashed var(--turquesa);
+
+    border-radius:13px;
+
+    padding:17px;
+
+    margin:25px 0;
+
+}
+
+
+.order-code span{
+
+    display:block;
+
+    color:#73878F;
+
+    font-size:11px;
+
+    margin-bottom:6px;
+
+}
+
+
+.order-code strong{
+
+    color:var(--turquesa-dark);
+
+    font-size:25px;
+
+    letter-spacing:2px;
+
+}
+
+
+/* =====================================================
+   ESTADO
+===================================================== */
+
+.status{
+
+    text-align:left;
+
+    margin-top:30px;
+
+}
+
+
+.status h3{
+
+    margin-bottom:25px;
+
+    color:var(--azul);
+
+}
+
+
+.status-step{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:22px;
+
+    position:relative;
+
+}
+
+
+.status-step:not(:last-child)::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:15px;
+
+    top:31px;
+
+    width:2px;
+
+    height:27px;
+
+    background:#D8E7E4;
+
+}
+
+
+.status-circle{
+
+    width:31px;
+
+    height:31px;
+
+    min-width:31px;
+
+    border-radius:50%;
+
+    background:#DCE9E6;
+
+    color:#6F848C;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:13px;
+
+    z-index:2;
+
+}
+
+
+.status-step.active .status-circle{
+
+    background:var(--turquesa);
+
+    color:white;
+
+}
+
+
+.status-text strong{
+
+    display:block;
+
+    color:#234858;
+
+    font-size:14px;
+
+    margin-bottom:3px;
+
+}
+
+
+.status-text span{
+
+    color:#81939A;
+
+    font-size:11px;
+
+}
+
+
+/* =====================================================
+   BOTONES FINALES
+===================================================== */
+
+.final-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:25px;
+
+}
+
+
+.final-button{
+
+    flex:1;
+
+    border:none;
+
+    border-radius:10px;
+
+    padding:13px;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+
+.primary{
+
+    background:var(--turquesa);
+
+    color:white;
+
+}
+
+
+.primary:hover{
+
+    background:var(--turquesa-dark);
+
+}
+
+
+.secondary{
+
+    background:#EAF7F4;
+
+    color:var(--turquesa-dark);
+
+}
+
+
+.secondary:hover{
+
+    background:#DDF1EC;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:850px){
+
+    .checkout-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .summary{
+
+        position:static;
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    header{
+
+        padding:0 5%;
+
+    }
+
+
+    .logo p{
+
+        display:none;
+
+    }
+
+
+    .container{
+
+        width:94%;
+
+    }
+
+
+    .page-title h2{
+
+        font-size:27px;
+
+    }
+
+
+    .info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .info-box.full{
+
+        grid-column:auto;
+
+    }
+
+
+    .payment-options{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .product-item{
+
+        grid-template-columns:
+        75px 1fr;
+
+        align-items:start;
+
+    }
+
+
+    .product-placeholder{
+
+        width:75px;
+
+        height:75px;
+
+    }
+
+
+    .product-total{
+
+        grid-column:2;
+
+        text-align:left;
+
+        margin-top:-5px;
+
+    }
+
+
+    .success{
+
+        padding:25px 18px;
+
+    }
+
+
+    .final-buttons{
+
+        flex-direction:column;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header>
+
+<div class="logo">
+
+<div class="logo-fallback">
+
+<img src="img/logo.png" alt="FarmaSalud">
+
+</div>
+
+<div>
+
+<h1>FarmaSalud</h1>
+
+<p>Tu salud, más cerca</p>
+
+</div>
+
+</div>
+
+
+<a
+href="index.html"
+class="back-home"
+>
+← Seguir comprando
+</a>
+
+</header>
+
+
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+===================================================== -->
+
+<main
+class="container"
+id="checkoutPage"
+>
+
+
+<div class="page-title">
+
+<h2>
+Finalizar pedido
+</h2>
+
+<p>
+Revisa tus productos y selecciona tu medio de pago.
+</p>
+
+</div>
+
+
+<div class="checkout-layout">
+
+
+<!-- =================================================
+     COLUMNA IZQUIERDA
+================================================= -->
+
+<div>
+
+
+<!-- PRODUCTOS -->
+
+<section class="card">
+
+<div class="card-title">
+
+<div class="number">
+1
+</div>
+
+<h3>
+Tus productos
+</h3>
+
+</div>
+
+
+<div id="productsList">
+</div>
+
+
+</section>
+
+
+<!-- DATOS DE ENTREGA -->
+
+<section class="card">
+
+<div class="card-title">
+
+<div class="number">
+2
+</div>
+
+<h3>
+Datos de entrega
+</h3>
+
+</div>
+
+
+<div
+class="info-grid"
+id="customerInfo"
+>
+</div>
+
+
+</section>
+
+
+<!-- MÉTODO DE PAGO -->
+
+<section class="card">
+
+<div class="card-title">
+
+<div class="number">
+3
+</div>
+
+<h3>
+Medio de pago
+</h3>
+
+</div>
+
+
+<div class="payment-options">
+
+
+<label
+class="payment-option"
+id="payment-card"
+>
+
+<input
+type="radio"
+name="payment"
+value="tarjeta"
+>
+
+<div class="payment-icon">
+💳
+</div>
+
+<div>
+
+<div class="payment-name">
+Tarjeta
+</div>
+
+<div class="payment-description">
+Débito o crédito
+</div>
+
+</div>
+
+</label>
+
+
+<label
+class="payment-option"
+id="payment-yape"
+>
+
+<input
+type="radio"
+name="payment"
+value="yape"
+>
+
+<div class="payment-icon">
+📱
+</div>
+
+<div>
+
+<div class="payment-name">
+Yape
+</div>
+
+<div class="payment-description">
+Pago digital
+</div>
+
+</div>
+
+</label>
+
+
+<label
+class="payment-option"
+id="payment-plin"
+>
+
+<input
+type="radio"
+name="payment"
+value="plin"
+>
+
+<div class="payment-icon">
+📲
+</div>
+
+<div>
+
+<div class="payment-name">
+Plin
+</div>
+
+<div class="payment-description">
+Pago digital
+</div>
+
+</div>
+
+</label>
+
+
+<label
+class="payment-option"
+id="payment-cash"
+>
+
+<input
+type="radio"
+name="payment"
+value="efectivo"
+>
+
+<div class="payment-icon">
+💵
+</div>
+
+<div>
+
+<div class="payment-name">
+Efectivo
+</div>
+
+<div class="payment-description">
+Pago al recibir
+</div>
+
+</div>
+
+</label>
+
+
+</div>
+
+
+<!-- FORMULARIO TARJETA -->
+
+<div
+class="card-form hidden"
+id="cardForm"
+>
+
+<div class="form-group">
+
+<label>
+Número de tarjeta
+</label>
+
+<input
+type="text"
+id="cardNumber"
+placeholder="0000 0000 0000 0000"
+maxlength="19"
+>
+
+</div>
+
+
+<div class="form-row">
+
+<div class="form-group">
+
+<label>
+Vencimiento
+</label>
+
+<input
+type="text"
+placeholder="MM/AA"
+maxlength="5"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+CVV
+</label>
+
+<input
+type="password"
+placeholder="•••"
+maxlength="4"
+>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- AVISO DE PAGO -->
+
+<div
+id="paymentMessage"
+style="
+margin-top:15px;
+padding:12px;
+background:#F5FAF9;
+border-radius:9px;
+font-size:12px;
+color:#627982;
+"
+>
+
+Selecciona un medio de pago.
+
+</div>
+
+
+</section>
+
+</div>
+
+
+<!-- =================================================
+     COLUMNA DERECHA
+================================================= -->
+
+<aside>
+
+<div class="card summary">
+
+<h3>
+Resumen del pedido
+</h3>
+
+
+<div class="summary-line">
+
+<span>
+Productos
+</span>
+
+<strong id="subtotal">
+S/ 0.00
+</strong>
+
+</div>
+
+
+<div class="summary-line">
+
+<span>
+Envío
+</span>
+
+<strong id="shipping">
+S/ 0.00
+</strong>
+
+</div>
+
+
+<div class="summary-line total">
+
+<span>
+Total
+</span>
+
+<strong id="total">
+S/ 0.00
+</strong>
+
+</div>
+
+
+<button
+class="confirm-button"
+onclick="confirmarPedido()"
+>
+
+CONFIRMAR PEDIDO
+
+</button>
+
+
+<div class="secure">
+
+🔒 Proceso seguro de demostración.<br>
+
+El prototipo no almacena información bancaria real.
+
+</div>
+
+
+</div>
+
+</aside>
+
+
+</div>
+
+</main>
+
+
+<!-- =====================================================
+     PANTALLA DE CONFIRMACIÓN
+===================================================== -->
+
+<main
+class="confirmation hidden"
+id="confirmationPage"
+>
+
+<div class="success">
+
+<div class="success-icon">
+✓
+</div>
+
+
+<h2>
+¡Pedido recibido!
+</h2>
+
+
+<p>
+Tu solicitud ha sido registrada correctamente.
+Guarda tu código de pedido para consultar
+su seguimiento.
+</p>
+
+
+<div class="order-code">
+
+<span>
+CÓDIGO DE PEDIDO
+</span>
+
+<strong id="orderCode">
+FS-000000
+</strong>
+
+</div>
+
+
+<div
+id="paymentConfirmed"
+style="
+margin-bottom:20px;
+font-size:13px;
+color:#55717c;
+"
+>
+</div>
+
+
+<!-- ESTADO -->
+
+<div class="status">
+
+<h3>
+Estado del pedido
+</h3>
+
+
+<div class="status-step active">
+
+<div class="status-circle">
+✓
+</div>
+
+<div class="status-text">
+
+<strong>
+Pedido recibido
+</strong>
+
+<span>
+Tu pedido fue registrado.
+</span>
+
+</div>
+
+</div>
+
+
+<div class="status-step">
+
+<div class="status-circle">
+2
+</div>
+
+<div class="status-text">
+
+<strong>
+Preparando pedido
+</strong>
+
+<span>
+Pendiente de actualización.
+</span>
+
+</div>
+
+</div>
+
+
+<div class="status-step">
+
+<div class="status-circle">
+3
+</div>
+
+<div class="status-text">
+
+<strong>
+En camino
+</strong>
+
+<span>
+Pendiente de actualización.
+</span>
+
+</div>
+
+</div>
+
+
+<div class="status-step">
+
+<div class="status-circle">
+4
+</div>
+
+<div class="status-text">
+
+<strong>
+Entregado
+</strong>
+
+<span>
+Pendiente de actualización.
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="final-buttons">
+
+<button
+class="final-button secondary"
+onclick="window.location.href='index.html'"
+>
+SEGUIR COMPRANDO
+</button>
+
+
+<button
+class="final-button primary"
+onclick="irSeguimiento()"
+>
+VER SEGUIMIENTO →
+</button>
+
+</div>
+
+
+</div>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let carrito =
+JSON.parse(
+localStorage.getItem(
+"farmaSaludCarrito"
+)
+) || [];
+
+
+let usuario =
+JSON.parse(
+localStorage.getItem(
+"farmaSaludUsuario"
+)
+) || null;
+
+
+/* =====================================================
+   VERIFICAR SESIÓN
+===================================================== */
+
+if(!usuario){
+
+    alert(
+        "Debes iniciar sesión antes de acceder al carrito."
+    );
+
+    window.location.href =
+    "login.html";
+
+}
+
+
+/* =====================================================
+   MOSTRAR PRODUCTOS
+===================================================== */
+
+function mostrarProductos(){
+
+    const container =
+    document.getElementById(
+        "productsList"
+    );
+
+
+    if(carrito.length === 0){
+
+        container.innerHTML = `
+
+        <div style="
+        text-align:center;
+        padding:35px;
+        color:#71858e;
+        ">
+
+        Tu carrito está vacío.
+
+        <br><br>
+
+        <a
+        href="index.html"
+        style="
+        color:#18B7A0;
+        font-weight:bold;
+        text-decoration:none;
+        "
+        >
+        ← Volver a productos
+        </a>
+
+        </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    carrito.forEach(item => {
+
+        /*
+           Si el producto tiene una propiedad "imagen"
+           utilizará automáticamente ese archivo.
+
+           Ejemplo:
+           imagen:"paracetamol.png"
+
+           Si todavía no tienes las imágenes,
+           se mantiene el espacio preparado.
+        */
+
+        const imagenProducto =
+        item.imagen
+        ?
+        `
+        <img
+            src="img/${item.imagen}"
+            alt="${item.nombre}"
+            onerror="this.style.display='none'"
+        >
+        `
+        :
+        `
+        <span>
+            Imagen<br>
+            del producto
+        </span>
+        `;
+
+
+        container.innerHTML += `
+
+        <div class="product-item">
+
+
+            <div class="product-placeholder">
+
+                ${imagenProducto}
+
+            </div>
+
+
+            <div>
+
+                <div class="product-category">
+
+                    ${item.categoria || "Producto"}
+
+                </div>
+
+
+                <div class="product-name">
+
+                    ${item.nombre}
+
+                </div>
+
+
+                <div class="product-price">
+
+                    S/ ${item.precio.toFixed(2)}
+                    cada uno
+
+                </div>
+
+
+                <div class="quantity">
+
+                    <button
+                    onclick="cambiarCantidad(
+                        ${item.id},
+                        -1
+                    )"
+                    >
+                    −
+                    </button>
+
+
+                    <span>
+                    ${item.cantidad}
+                    </span>
+
+
+                    <button
+                    onclick="cambiarCantidad(
+                        ${item.id},
+                        1
+                    )"
+                    >
+                    +
+                    </button>
+
+
+                    <button
+                    class="delete-product"
+                    onclick="eliminarProducto(
+                        ${item.id}
+                    )"
+                    >
+                    Eliminar
+                    </button>
+
+                </div>
+
+
+                ${
+                    item.receta
+
+                    ?
+
+                    `
+
+                    <div class="recipe-warning">
+
+                    📄 <strong>
+                    Este producto requiere receta médica.
+                    </strong>
+
+                    Se deberá verificar la receta
+                    antes de completar la gestión
+                    del producto.
+
+                    </div>
+
+                    `
+
+                    :
+
+                    ""
+
+                }
+
+
+            </div>
+
+
+            <div class="product-total">
+
+                S/
+                ${(item.precio * item.cantidad)
+                .toFixed(2)}
+
+            </div>
+
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =====================================================
+   DATOS DEL CLIENTE
+===================================================== */
+
+function mostrarUsuario(){
+
+    const container =
+    document.getElementById(
+        "customerInfo"
+    );
+
+
+    if(!usuario){
+
+        return;
+
+    }
+
+
+    const ubicacion =
+    usuario.ubicacion || {};
+
+
+    container.innerHTML = `
+
+    <div class="info-box">
+
+        <div class="info-label">
+        Cliente
+        </div>
+
+        <div class="info-value">
+
+        ${usuario.nombres}
+        ${usuario.apellidos}
+
+        </div>
+
+    </div>
+
+
+    <div class="info-box">
+
+        <div class="info-label">
+        Teléfono
+        </div>
+
+        <div class="info-value">
+
+        ${usuario.telefono}
+
+        </div>
+
+    </div>
+
+
+    <div class="info-box">
+
+        <div class="info-label">
+        Departamento
+        </div>
+
+        <div class="info-value">
+
+        ${ubicacion.departamento || "-"}
+
+        </div>
+
+    </div>
+
+
+    <div class="info-box">
+
+        <div class="info-label">
+        Ciudad
+        </div>
+
+        <div class="info-value">
+
+        ${ubicacion.ciudad || "-"}
+
+        </div>
+
+    </div>
+
+
+    <div class="info-box full">
+
+        <div class="info-label">
+        Dirección
+        </div>
+
+        <div class="info-value">
+
+        ${ubicacion.direccion || "-"}
+
+        </div>
+
+    </div>
+
+
+    ${
+        ubicacion.referencia
+
+        ?
+
+        `
+
+        <div class="info-box full">
+
+            <div class="info-label">
+            Referencia
+            </div>
+
+            <div class="info-value">
+
+            ${ubicacion.referencia}
+
+            </div>
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+    }
+
+    `;
+
+}
+
+
+/* =====================================================
+   TOTALES
+===================================================== */
+
+function calcularTotales(){
+
+    let subtotal = 0;
+
+
+    carrito.forEach(item => {
+
+        subtotal +=
+        item.precio *
+        item.cantidad;
+
+    });
+
+
+    const envio = 0;
+
+
+    const total =
+    subtotal + envio;
+
+
+    document.getElementById(
+        "subtotal"
+    ).textContent =
+    "S/ " + subtotal.toFixed(2);
+
+
+    document.getElementById(
+        "shipping"
+    ).textContent =
+    "S/ " + envio.toFixed(2);
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+    "S/ " + total.toFixed(2);
+
+
+    return total;
+
+}
+
+
+/* =====================================================
+   CANTIDAD
+===================================================== */
+
+function cambiarCantidad(id,cambio){
+
+    const producto =
+    carrito.find(
+        item => item.id === id
+    );
+
+
+    if(!producto){
+
+        return;
+
+    }
+
+
+    producto.cantidad += cambio;
+
+
+    if(producto.cantidad <= 0){
+
+        carrito =
+        carrito.filter(
+            item => item.id !== id
+        );
+
+    }
+
+
+    guardarCarrito();
+
+    cargarTodo();
+
+}
+
+
+/* =====================================================
+   ELIMINAR
+===================================================== */
+
+function eliminarProducto(id){
+
+    carrito =
+    carrito.filter(
+        item => item.id !== id
+    );
+
+
+    guardarCarrito();
+
+    cargarTodo();
+
+}
+
+
+/* =====================================================
+   GUARDAR CARRITO
+===================================================== */
+
+function guardarCarrito(){
+
+    localStorage.setItem(
+
+        "farmaSaludCarrito",
+
+        JSON.stringify(carrito)
+
+    );
+
+}
+
+
+/* =====================================================
+   MÉTODOS DE PAGO
+===================================================== */
+
+const paymentOptions =
+document.querySelectorAll(
+    ".payment-option"
+);
+
+
+paymentOptions.forEach(option => {
+
+    option.addEventListener(
+        "click",
+        function(){
+
+            paymentOptions.forEach(
+                o =>
+                o.classList.remove(
+                    "selected"
+                )
+            );
+
+
+            this.classList.add(
+                "selected"
+            );
+
+
+            const radio =
+            this.querySelector(
+                "input"
+            );
+
+            radio.checked = true;
+
+
+            cambiarMetodoPago(
+                radio.value
+            );
+
+        }
+    );
+
+});
+
+
+function cambiarMetodoPago(metodo){
+
+    const cardForm =
+    document.getElementById(
+        "cardForm"
+    );
+
+
+    const message =
+    document.getElementById(
+        "paymentMessage"
+    );
+
+
+    cardForm.classList.add(
+        "hidden"
+    );
+
+
+    if(metodo === "tarjeta"){
+
+        cardForm.classList.remove(
+            "hidden"
+        );
+
+
+        message.innerHTML =
+        "💳 Ingresa los datos de tu tarjeta para completar el pago de demostración.";
+
+    }
+
+
+    else if(metodo === "yape"){
+
+        message.innerHTML =
+        "📱 El pago mediante Yape será coordinado durante la confirmación del pedido.";
+
+    }
+
+
+    else if(metodo === "plin"){
+
+        message.innerHTML =
+        "📲 El pago mediante Plin será coordinado durante la confirmación del pedido.";
+
+    }
+
+
+    else if(metodo === "efectivo"){
+
+        message.innerHTML =
+        "💵 Pagarás el monto indicado al momento de recibir el pedido.";
+
+    }
+
+}
+
+
+/* =====================================================
+   GENERAR CÓDIGO DE PEDIDO
+===================================================== */
+
+function generarCodigo(){
+
+    const numero =
+    Math.floor(
+        100000 +
+        Math.random() * 900000
+    );
+
+
+    const fecha =
+    new Date()
+    .getFullYear();
+
+
+    return "FS-" +
+    fecha +
+    "-" +
+    numero;
+
+}
+
+
+/* =====================================================
+   CONFIRMAR PEDIDO
+===================================================== */
+
+function confirmarPedido(){
+
+    if(carrito.length === 0){
+
+        alert(
+            "Tu carrito está vacío."
+        );
+
+        return;
+
+    }
+
+
+    const payment =
+    document.querySelector(
+        'input[name="payment"]:checked'
+    );
+
+
+    if(!payment){
+
+        alert(
+            "Selecciona un medio de pago."
+        );
+
+        return;
+
+    }
+
+
+    /* VALIDACIÓN TARJETA */
+
+    if(payment.value === "tarjeta"){
+
+        const cardNumber =
+        document.getElementById(
+            "cardNumber"
+        ).value.trim();
+
+
+        if(cardNumber.length < 12){
+
+            alert(
+                "Ingresa un número de tarjeta válido para la demostración."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* =================================================
+       RECETA
+    ================================================= */
+
+    const productosConReceta =
+    carrito.filter(
+        item => item.receta
+    );
+
+
+    let recetaAdjunta =
+    localStorage.getItem(
+        "farmaSaludReceta"
+    );
+
+
+    if(
+        productosConReceta.length > 0
+        &&
+        !recetaAdjunta
+    ){
+
+        alert(
+
+            "Uno o más productos de tu carrito requieren receta médica. " +
+            "Debes adjuntar la receta antes de continuar."
+
+        );
+
+        window.location.href =
+        "login.html";
+
+        return;
+
+    }
+
+
+    /* =================================================
+       GENERAR PEDIDO
+    ================================================= */
+
+    const codigo =
+    generarCodigo();
+
+
+    const total =
+    calcularTotales();
+
+
+    const pedido = {
+
+        codigo:codigo,
+
+        fecha:
+        new Date().toLocaleString(
+            "es-PE"
+        ),
+
+        productos:carrito,
+
+        usuario:usuario,
+
+        total:total,
+
+        pago:payment.value,
+
+        recetaAdjunta:
+        recetaAdjunta || null,
+
+        estado:"Pedido recibido"
+
+    };
+
+
+    localStorage.setItem(
+
+        "farmaSaludPedido",
+
+        JSON.stringify(pedido)
+
+    );
+
+
+    /* =================================================
+       MOSTRAR CONFIRMACIÓN
+    ================================================= */
+
+    document.getElementById(
+        "checkoutPage"
+    ).classList.add(
+        "hidden"
+    );
+
+
+    document.getElementById(
+        "confirmationPage"
+    ).classList.remove(
+        "hidden"
+    );
+
+
+    document.getElementById(
+        "orderCode"
+    ).textContent =
+    codigo;
+
+
+    document.getElementById(
+        "paymentConfirmed"
+    ).innerHTML =
+
+    "Medio de pago seleccionado: <strong>" +
+    nombrePago(payment.value) +
+    "</strong>";
+
+}
+
+
+/* =====================================================
+   NOMBRE DEL PAGO
+===================================================== */
+
+function nombrePago(pago){
+
+    const nombres = {
+
+        tarjeta:"Tarjeta",
+
+        yape:"Yape",
+
+        plin:"Plin",
+
+        efectivo:"Efectivo contra entrega"
+
+    };
+
+
+    return nombres[pago] || pago;
+
+}
+
+
+/* =====================================================
+   SEGUIMIENTO
+===================================================== */
+
+function irSeguimiento(){
+
+    window.location.href =
+    "seguimiento.html";
+
+}
+
+
+/* =====================================================
+   CARGAR TODO
+===================================================== */
+
+function cargarTodo(){
+
+    mostrarProductos();
+
+    mostrarUsuario();
+
+    calcularTotales();
+
+}
+
+
+cargarTodo();
+
+</script>
+
+
+</body>
+
+</html>
